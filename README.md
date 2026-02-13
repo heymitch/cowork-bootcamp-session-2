@@ -1,41 +1,59 @@
 # Cowork Bootcamp — Session 2: Content & Voice
 
-Teach your agent how you write, then watch it create content that sounds like you.
+Teach your agent how you write. Then watch it create content that sounds like you — not like AI.
+
+## Components
+
+| Component | Count |
+|-----------|-------|
+| Skills | 3 |
+| Connectors | 1 |
 
 ## Install
 
-Add the marketplace, then install the plugin:
-
 ```
 /plugin marketplace add heymitch/cowork-bootcamp-session-2
-/plugin install cowork-bootcamp-session-2@speakeasy-session-2
+/plugin install cowork-bootcamp-session-2@ship30-marketplace
 ```
-
-One install — all four skills appear automatically.
 
 ## Skills
 
-| Skill | Trigger | What It Does |
-|-------|---------|-------------|
-| Voice Training | "Train on my voice" | Learn your writing style from samples |
-| Newsletter Writer | "Write a newsletter about X" | Draft newsletters in your voice |
-| Voice Memo to Post | "Turn this voice memo into a post" | Convert audio recordings into written content |
-| Notion Connector | "Connect Notion" | Set up Notion as your content hub |
+Skills are things your agent knows how to do. Say the trigger phrase and it works.
+
+| Skill | Say This | What Happens |
+|-------|----------|-------------|
+| **Voice Training** | "Train on my voice" | Feed it 3-5 writing samples you're proud of. It builds a voice profile — sentence length, word choice, personality, formatting habits. Every content skill uses this profile, so your output sounds like you wrote it. |
+| **Newsletter Writer** | "Write my newsletter" | Scans your recent notes for ideas (or takes a topic), picks the strongest thread, and drafts a full newsletter in your voice. Subject line, hook, body, CTA. You review before it saves. |
+| **Voice Memo to Post** | "Turn this voice memo into a post" | Drop an audio file or paste rough notes. It extracts the core idea, picks the best format and platform, and polishes it — preserving your phrasing and opinions while removing filler. Your raw voice, cleaned up. |
+
+## Connectors
+
+Connectors are optional external tools your agent can use. Skills work without them, but connectors make them better.
+
+| Connector | Say This | What It Adds |
+|-----------|----------|-------------|
+| **Notion** | "Connect Notion" | Your agent can read your Notion pages and save finished work directly to your databases. Newsletter drafts show up in Notion instead of local files. Notes become source material automatically. |
 
 ## Session Order
 
-1. **Voice Training** — paste writing samples so your agent learns your style (10 minutes)
-2. **Notion Connector** — connect Notion for content storage (5 minutes)
-3. **Newsletter Writer** — write your first newsletter with your trained voice
-4. **Voice Memo to Post** — record a voice memo and watch it become a post
+Total time: ~25 minutes.
+
+1. **Voice Training** — paste writing samples so your agent learns your style *(10 minutes)*
+2. **Voice Memo to Post** — drop a rough note or audio and watch it become a polished post *(5 minutes)*
+3. **Newsletter Writer** — write your first newsletter in your trained voice *(10 minutes)*
+4. **Notion Connector** *(optional)* — connect Notion so finished work saves where you already work *(5 minutes)*
+
+After this session, your agent writes in your voice and can turn raw ideas into finished content. Session 3 adds meeting prep and email.
 
 ## Part of Cowork Bootcamp
 
-This is session 2 of 6. Each session adds new skills:
+Session 2 of 6. Each session adds new skills to your agent:
 
-- **Session 1** — Setup & Organization
-- **Session 2** — Content & Voice (you are here)
-- **Session 3** — Meeting Prep & Email
-- **Session 4** — Project Kit & Presentations
-- **Session 5** — Landing Pages
-- **Session 6** — Skill Building
+| Session | Focus | Skills | Connectors |
+|---------|-------|--------|------------|
+| **1** | Setup & Organization | Business Blueprint, Organize Machine | — |
+| **2** | Content & Voice | Voice Training, Newsletter Writer, Voice Memo to Post | Notion |
+| **3** | Meeting Prep & Email | Meeting Prep | Gmail, Fireflies |
+| **4** | Project Kit & Presentations | Project Kit, Social Content | Gamma |
+| **5** | Landing Pages | Vercel Landing Page, Frontend Design | — |
+| **6** | Skill Building | Skill Maker, Digital Product | — |
