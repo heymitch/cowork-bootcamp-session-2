@@ -1,13 +1,13 @@
 ---
 name: newsletter-writer
-description: Draft your weekly newsletter by pulling from your Notion notes, writing in your voice, and saving the finished draft. Say "Write my newsletter" or "Draft a newsletter about [topic]".
+description: Draft your weekly newsletter — from idea to finished draft with subject lines — in your voice. Say "Write my newsletter" or "Draft a newsletter about [topic]".
 ---
 
 # Newsletter Writer
 
 ## What This Does
 
-Writes your newsletter. Scans your recent notes for ideas, writes a draft in your voice, and saves it. You review, tweak, publish.
+Takes you from a vague idea to a polished newsletter draft in ~11 minutes. Runs a clarity exercise, picks a template, writes in your voice, generates subject lines with preview-text. You review, tweak, publish.
 
 ## How to Run
 
@@ -17,61 +17,66 @@ Writes your newsletter. Scans your recent notes for ideas, writes a draft in you
 
 ---
 
-## Preflight Check (Run Every Time)
+## Preflight Check (Run Silently)
 
-Before writing anything, run through this checklist silently. Only speak up if something is missing.
+### 1. Config check
+Read `config.md` from project root.
+- **Missing:** Stop. Say: "Say **'Run my business blueprint'** first — takes 5 minutes."
+- **Exists:** Continue.
 
-### 1. Does config.md exist?
+### 2. Voice check
+Check config.md for `- [x] Voice Training completed`.
+- **Unchecked:** Stop. Say: "Say **'Train on my voice'** first so this sounds like you."
+- **Checked:** Load Voice Profile section. Wrap all content generation with `<VOICE>{profile}</VOICE>`.
 
-Read `config.md` from the project root.
+### 3. Notion check (silent)
+- **Notion tools found:** Will save to Notion. Update checkbox if unchecked.
+- **No Notion tools:** Save locally. Don't mention Notion.
 
-- **If missing:** Stop. Say:
-  > "I need to know about you and your business first. Say **'Run my business blueprint'** — it takes 5 minutes and makes everything I write actually sound like you."
-- **If exists:** Continue. Read the Setup Status section.
-
-### 2. Is Voice Training complete?
-
-Check config.md for `- [x] Voice Training completed` in the Setup Status section.
-
-- **If unchecked or missing:** Stop. Say:
-  > "I can write a newsletter, but it won't sound like you yet. Say **'Train on my voice'** first — it takes a few minutes and I only need to do it once. Then come back and say 'Write my newsletter' again."
-- **If checked:** Continue. Load the Voice Samples section from config.md.
-
-### 3. Is Notion connected?
-
-Check your available tools for Notion tools (search, create page, read page, etc.).
-
-- **If Notion tools found:** Great. Check config.md — if `- [ ] Notion connected` is unchecked, update it to `- [x] Notion connected`.
-- **If no Notion tools:** That's fine. Say:
-  > "Notion isn't connected, so I'll save your draft as a local file instead. If you want me to save directly to Notion next time, I can walk you through connecting it after we finish."
-
-  Continue in local-file mode.
-
-### 4. All clear
-
-If config.md exists, voice is trained, proceed to writing. Don't announce the preflight — just do the work.
+### 4. All clear — proceed without announcing.
 
 ---
 
-## What the Agent Does
+## The Process
 
-1. **Find material.** If Notion is connected, scan for recent notes, highlights, and saved ideas from the past 7 days. If not, ask: "What do you want to write about this week? Drop a topic, paste some notes, or point me to a file."
-2. **Pick the thread.** Group related ideas. Pick the strongest one. If multiple strong threads, ask which one.
-3. **Write the draft** in the user's voice (from config.md voice profile). Format: subject line, intro hook, main body, CTA.
-4. **Show the draft.** Do not save yet. Wait for approval or edits.
-5. **Save.** On approval: save to Notion (if connected) or local markdown file.
-6. **Suggest 3 social media hooks** to promote the newsletter.
+### Step 1: Find Material
+If Notion connected, scan recent notes/highlights/ideas from the past 7 days. If not, ask: "What do you want to write about this week? Drop a topic, paste some notes, or point me to a file."
+
+### Step 2: Pinpoint Writing
+Run the 5-question clarity exercise from `references/pinpoint-writing.md`. This locks in the angle before writing a single word. For repeat users with a clear topic, infer answers from context and confirm.
+
+### Step 3: Pick the Format
+Ask: "Curating resources for your readers, or sharing your own thinking?" See `references/newsletter-templates.md` for the two newsletter types and body templates. Default to Original Thinking for most creators.
+
+### Step 4: Build the Headline
+Generate 3-5 headline options using the Irresistible Headlines formula from `references/headline-formula.md`. Present with pieces labeled. User picks or combines.
+
+### Step 5: Write the Draft
+Using the chosen template + headline + Pinpoint Writing answers + voice profile:
+- Write the full newsletter body
+- Apply the `<VOICE>{Voice Template}</VOICE>` wrapper from config.md
+- Follow the template structure exactly — don't skip sections
+
+### Step 6: Generate Subject Lines
+After the draft is written, generate 4 subject line + preview-text pairs using `references/subject-lines.md`. One for each hook type, each with a matching whisper.
+
+### Step 7: Show Everything
+Present the draft + subject line options. **Do not save yet.** Wait for approval or edits.
+
+### Step 8: Save
+On approval: save to Notion (if connected) or local markdown file. Suggest 3 social media hooks to promote the newsletter.
 
 ## Customization
 
-- **Change the source.** Point it at specific Notion databases instead of scanning everything.
-- **Change the format.** If the newsletter has sections (intro, links, takeaway), describe that structure in config.md.
+- **Change the source.** Point at specific Notion databases instead of scanning everything.
+- **Change the format.** Describe newsletter sections in config.md for custom structure.
 - **Change the frequency.** Weekly, biweekly, or daily digest.
 
 ## Rules
 
 - Always show the draft before saving. Never publish directly.
-- Use the voice profile for tone and style. If the draft sounds generic, you skipped something.
-- If no recent notes found and no topic given, ask. Do not make something up.
+- Use the voice profile. If the draft sounds generic, you skipped the voice wrapper.
+- If no notes and no topic, ask. Do not fabricate.
 - Human writing rules: no AI-tell patterns, vary sentence length, use specific details over vague claims.
-- After a successful first run, if Notion was connected during this session, update config.md Setup Status.
+- Subject lines: 9 words max, 60 characters max, sentence case, visceral language.
+- After first successful run, update config.md Setup Status.
