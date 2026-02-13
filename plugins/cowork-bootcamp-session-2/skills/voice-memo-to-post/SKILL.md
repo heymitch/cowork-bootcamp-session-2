@@ -1,77 +1,98 @@
 ---
 name: voice-memo-to-post
-description: Turn voice memos, rough notes, and dictated ideas into polished social media posts in your voice. Say "Turn this voice memo into a post" or "Polish these rough notes".
+description: Turn voice memos, rough notes, and raw ideas into publish-ready social media posts — researched, hooked, and saved to Notion. Say "Turn this into a post" or "Post this to LinkedIn".
 ---
 
 # Voice Memo to Post
 
 ## What This Does
 
-Turns your messy voice memos and rough notes into polished posts. Record an idea on a walk, during a commute, or in the shower — then run this skill and get a publish-ready post in your voice.
+Takes your raw input — voice memo, rough notes, a topic, a half-baked idea — and turns it into a publish-ready post. Picks the right hook framework, researches context if needed, writes in your voice, and saves to Notion.
 
 ## How to Run
 
-- "Turn this voice memo into a LinkedIn post" + drop the audio file
-- "Polish these rough notes into a post: [paste rough notes]"
-- "I rambled about [topic] — make it a thread"
+- "Turn this voice memo into a post" + drop the audio file
+- "Polish these rough notes: [paste notes]"
+- "I rambled about [topic] — make it a LinkedIn post"
+- "Post this idea: [raw thought]"
 
 ---
 
-## Preflight Check (Run Every Time)
+## Preflight Check (Run Silently)
 
-Run through this silently. Only speak up if something is missing.
+### 1. Config check
+Read `config.md` from project root.
+- **Missing:** Stop. Say: "Say **'Run my business blueprint'** first — takes 5 minutes."
+- **Exists:** Continue.
 
-### 1. Does config.md exist?
-Read `config.md` from the project root.
-- **If missing:** Stop. Say: "I need to know about you and your business first. Say **'Run my business blueprint'** — it takes 5 minutes."
-- **If exists:** Continue.
+### 2. Voice check
+Check config.md for `- [x] Voice Training completed`.
+- **Unchecked:** Stop. Say: "Say **'Train on my voice'** first so this sounds like you."
+- **Checked:** Load Voice Profile. Wrap all content generation with `<VOICE>{profile}</VOICE>`.
 
-### 2. Is Voice Training complete?
-Check config.md for `- [x] Voice Training completed` in the Setup Status section.
-- **If unchecked or missing:** Stop. Say: "I can polish this, but it won't sound like you yet. Say **'Train on my voice'** first — I only need to do it once. Then come back with your memo."
-- **If checked:** Load the Voice Profile section from config.md. Wrap all content generation with `<VOICE>{profile}</VOICE>`.
+### 3. Notion check (silent)
+- **Notion tools found:** Will save to Notion. Update checkbox if unchecked.
+- **No Notion tools:** Save locally. Don't mention Notion.
 
-### 3. Is Notion connected?
-Check your available tools for Notion tools.
-- **If found:** Save finished posts to Notion. If config.md has `- [ ] Notion connected`, update to checked.
-- **If not found:** Save as local files. Don't mention Notion.
-
-### 4. All clear — proceed silently.
+### 4. All clear — proceed without announcing.
 
 ---
 
-## What the Agent Does
+## The Process
 
-1. If audio file provided, transcribe it. Otherwise read the rough text or notes.
-2. Extract the core idea. What's the one thing they're saying?
-3. Pick the best format: single post, thread, or long-form.
-4. Pick the best platform based on content length and style. X for punchy, LinkedIn for depth.
-5. Write a polished draft using their voice profile.
-6. Preserve their original phrasing where it's strong. Don't over-polish personality out of it.
-7. Show the original transcription/notes alongside the polished version.
-8. On approval, save to Notion or local file.
+### Step 1: Capture the Raw Input
+If audio file → transcribe it. If text → read it. If topic only → use it as the seed.
+Show the raw transcription/notes back to the user so they can see what you're working with.
 
-## The Key Principle
+### Step 2: Extract the Core Idea
+What's the one thing they're saying? Distill to a single sentence. If the input has multiple ideas, pick the strongest and mention the others: "I see 3 ideas here — going with [strongest]. Want me to draft the others after?"
 
-Your raw voice is gold. This skill cleans it up without killing what made it yours.
+### Step 3: Research (If Needed)
+If the core idea references a trend, news event, stat, or claim that needs context:
+- Use web search to find current supporting info
+- Add one data point or fact to strengthen the post
+- Never fabricate. If search returns nothing useful, write without it
+Skip research for personal stories, opinions, or experience-based posts.
 
-**Preserve:** unique phrases, strong opinions, personal stories, specific examples.
+### Step 4: Pick the Hook Framework
+Read the raw input energy and select from the 5 frameworks in `references/hook-frameworks.md`:
+- Frustration/disagreement → **Contrarian** or **Hot Take**
+- "Let me tell you what happened" → **Personal Story**
+- Curiosity/wondering → **Question**
+- "I see where this is going" → **Prediction**
+If unclear, present top 2 with sample hooks and let user choose.
 
-**Remove:** filler words, repetition, tangents that don't serve the point, incomplete thoughts that confuse.
+### Step 5: Pick the Platform
+If user didn't specify, match to content:
+- Short + punchy → X single (≤280 chars)
+- Story or lesson with depth → LinkedIn (800-1200 chars)
+- Multiple connected points → X thread or LinkedIn (ask)
+Confirm: "This feels like a LinkedIn post — want it there or somewhere else?"
+See `references/post-structure.md` for platform formats.
 
-**Add:** structure (hook, body, CTA), formatting for the platform, context a reader needs.
+### Step 6: Write the Draft
+Using hook framework + platform format + voice profile:
+- Apply `<VOICE>{Voice Template}</VOICE>` wrapper
+- Preserve the user's original phrasing where it's strong
+- Structure: Hook → Body → CTA
+- Never add ideas that weren't in the original (research context is the exception)
 
-## Input Formats Accepted
+### Step 7: Show Original + Draft
+Present side by side with hook framework labeled and character count.
+**Do not save yet.** Wait for approval or edits.
 
-- Audio files (.m4a, .mp3, .wav, .ogg)
-- Rough text pasted directly
-- A file path to a text or markdown file with notes
-- A Notion page with rough notes
+### Step 8: Save to Notion
+On approval: save to Notion content database (or local `content/YYYY-MM/DD-[slug].md`).
+Include frontmatter: platform, date, status (draft), hook_framework used.
+
+## Input Formats
+
+Audio files (.m4a, .mp3, .wav, .ogg), rough text, file paths, Notion pages, or just a topic.
 
 ## Rules
 
-- Always show the original alongside the polished version so the user can compare.
-- Never add ideas, stats, or examples that weren't in the original. Only reshape what's there.
-- Use voice profile for style but lean heavier on the actual words from the memo.
-- If the memo is too short or unclear for a full post, ask for one clarifying detail instead of padding.
-- Apply human writing rules. No AI patterns.
+- Always show original alongside draft so user can compare.
+- Preserve unique phrases, strong opinions, personal stories, specific examples.
+- Remove filler, repetition, tangents. Add structure and platform formatting.
+- If the input is too short for a full post, ask for one clarifying detail — don't pad.
+- Human writing rules: no AI patterns, vary sentence length, specific > vague.
