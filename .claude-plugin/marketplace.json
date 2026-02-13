@@ -1,0 +1,19 @@
+{
+  "name": "cowork-bootcamp-session-2",
+  "owner": {
+    "name": "Speakeasy",
+    "url": "https://github.com/heymitch"
+  },
+  "metadata": {
+    "description": "Cowork Bootcamp Session 2: Content & Voice. Train your agent on your voice, write newsletters, turn voice memos into posts, and connect Notion.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "cowork-bootcamp-session-2",
+      "description": "Session 2: Content & Voice. Train your agent on your writing voice, generate newsletters, convert voice memos to posts, and connect Notion.",
+      "version": "1.0.0",
+      "source": "./plugins/cowork-bootcamp-session-2"
+    }
+  ]
+}
