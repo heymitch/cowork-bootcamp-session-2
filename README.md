@@ -22,7 +22,7 @@ Skills are things your agent knows how to do. Say the trigger phrase and it work
 
 | Skill | Say This | What Happens |
 |-------|----------|-------------|
-| **Voice Training** | "Train on my voice" | Feed it 3-5 writing samples you're proud of. It builds a voice profile — sentence length, word choice, personality, formatting habits. Every content skill uses this profile, so your output sounds like you wrote it. |
+| **Voice Training** | "Train on my voice" | This session includes the full **Digital Writer's Voice Lab** — a complete voice cloning system built into your agent. Feed it 3-5 writing samples and it runs the full process: extracts your Voice DNA, identifies your archetype mix (Storyteller, Opinionator, Frameworker, Fact Presenter, or F-Bomber), audits your vocabulary, fingerprints your sentence patterns, catalogs your quirks, and places you on the Tone Grid. The output is a cached Voice Template that every writing skill loads automatically — so everything your agent writes sounds like you, not AI. |
 | **Newsletter Writer** | "Write my newsletter" | Scans your recent notes for ideas (or takes a topic), picks the strongest thread, and drafts a full newsletter in your voice. Subject line, hook, body, CTA. You review before it saves. |
 | **Voice Memo to Post** | "Turn this voice memo into a post" | Drop an audio file or paste rough notes. It extracts the core idea, picks the best format and platform, and polishes it — preserving your phrasing and opinions while removing filler. Your raw voice, cleaned up. |
 
