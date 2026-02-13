@@ -29,7 +29,7 @@ Read `config.md` from the project root.
 ### 2. Is Voice Training complete?
 Check config.md for `- [x] Voice Training completed` in the Setup Status section.
 - **If unchecked or missing:** Stop. Say: "I can polish this, but it won't sound like you yet. Say **'Train on my voice'** first — I only need to do it once. Then come back with your memo."
-- **If checked:** Load the voice profile from config.md.
+- **If checked:** Load the Voice Profile section from config.md. Wrap all content generation with `<VOICE>{profile}</VOICE>`.
 
 ### 3. Is Notion connected?
 Check your available tools for Notion tools.
